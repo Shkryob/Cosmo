@@ -364,12 +364,6 @@ class Cosmo {
     public function contentRead($url=NULL, $admin=NULL){
         if($url)
         {
-            // Remove the prefix from the URL
-            if(!empty($this->prefix)){
-                $prefix = substr($this->prefix, 0, strlen($this->prefix)-1); // Remove trailing slash '/'
-                $url = str_replace ($prefix, '', $url);
-            }
-
             // Lookup page in URL
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'content WHERE url=?');
             $data = array($url);
