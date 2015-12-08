@@ -48,7 +48,8 @@ angular.module('cosmo').directive('csContent', ['Page', '$routeParams', '$sce', 
             // Display the WYSIWYG toolbar
             elm.on('mousedown', function(event) {
                 scope.currentBlock = attrs.csContent;
-                if(attrs.type !== 'text' && (!event.srcElement.attributes['cs-type'] || event.srcElement.attributes['cs-type'].value !== 'text'))
+                var srlElement = event.srcElement || event.target;
+                if(attrs.type !== 'text' && (!srlElement.attributes['cs-type'] || srlElement.attributes['cs-type'].value !== 'text'))
                     $rootScope.$broadcast('activateWYSIWYG', event);
             });
 
