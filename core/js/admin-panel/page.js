@@ -213,7 +213,7 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
         }
 
         // If there's no custom url, throw an error
-        if($scope.page.url.length === 0 || $scope.page.url === 'new'){
+        if(typeof $scope.page.url !== 'string' || $scope.page.url.length === 0 || $scope.page.url === 'new'){
             $translate('page_no_url').then(function(translatedText){
                 $rootScope.$broadcast('notify', { message: translatedText, classes: 'alert-error' });
             });
